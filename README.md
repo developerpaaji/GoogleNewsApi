@@ -40,6 +40,10 @@ googleNewsApi.initialize(storeFunction);
 googleNewsApi.addCountryCode(code);
 setInterval(googleNewsApi.refresh,1000*60*60);
 
+//Search 
+googleNewsApi.search('Modi','IN').then((results)=>{
+   
+})
 ```
 
 ### Built With
