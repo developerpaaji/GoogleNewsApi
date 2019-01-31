@@ -14,7 +14,7 @@ News {
   description: 'SpaceX is getting excruciatingly close to catching a part of its rocket that falls out of the sky after each launch. A new video shows a recent drop test of the ...',
   thumbnail: 'https://lh3.googleusercontent.com/NKOw3Vvids-nNCfx1vmll-wR88AvTqnRK3vakt4XhxhtYzgWlurhPEOWY-lq413YTava0bMKdwIKrxQvRjQ=pf-w200-h200',
   publisher: 'The Verge',
-  publishedAt: 'seconds: 1548865689\n',
+  publishedAt: 1548865689,
   category: 'Science',
   url: 'https://news.google.com/articles/CAIiEGxY4QfBKcLIDNpvJ1mDS2AqFggEKg4IACoGCAow3O8nMMqOBjD38Ak?hl=en-US&gl=US&ceid=US%3Aen',
   related:
