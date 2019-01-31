@@ -5,7 +5,7 @@ A REST api which will give all news from any location of different categories an
 Currently only following countries are supported :-
 ['IN','US','AU','CA','CN','FR','JP','PK','RU','UK']
 
-Categories are Headlines, Business, Entertainment, Health, Science, Sports, World and Techology.
+Categories are Business, Entertainment, Health, Science, Sports, World and Techology.
 
 Firebase api - https://news-20e36.firebaseio.com/.json
 
