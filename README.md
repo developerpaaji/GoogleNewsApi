@@ -1,6 +1,18 @@
 # GoogleNewsApi
 A REST api which will give all news from any location of different categories and also related news
 
+### Firebase Api Usage
+Currently only following countries are supported :-
+['IN','US','AU','CA','CN','FR','JP','PK','RU','UK']
+
+Categories are Headlines, Business, Entertainment, Health, Science, Sports, World and Techology.
+
+Firebase api - https://news-20e36.firebaseio.com/:countryCode/:category.json
+
+Sample
+https://news-20e36.firebaseio.com/US.json
+https://news-20e36.firebaseio.com/US/Business.json
+
 ### Installation 
 ```
 npm i googlenewsapi
