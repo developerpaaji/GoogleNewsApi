@@ -7,7 +7,8 @@ Currently only following countries are supported :-
 
 Categories are Headlines, Business, Entertainment, Health, Science, Sports, World and Techology.
 
-Firebase api - https://news-20e36.firebaseio.com/:countryCode/:category.json
+Firebase api - https://news-20e36.firebaseio.com/.json
+Use as https://news-20e36.firebaseio.com/:countryCode/:category.json
 
 Sample
 https://news-20e36.firebaseio.com/US.json
