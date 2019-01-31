@@ -13,6 +13,7 @@ Use as https://news-20e36.firebaseio.com/:countryCode/:category.json
 
 Sample
 https://news-20e36.firebaseio.com/US.json
+
 https://news-20e36.firebaseio.com/US/Business.json
 
 ### Installation 
