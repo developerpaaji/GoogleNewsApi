@@ -1,23 +1,44 @@
 const cheerio=require("cheerio")
 const async=require('async')
 const request=require('request');
-var data={};
-function initialize(storeNews,countryCode='US',languageCode='en') 
+var data=[];
+var storeData;
+function base(code)
+  {
+    return `https://news.google.com/?gl=${code}`
+  }
+function initialize(storeNews) 
 {
   if(!storeNews)
   {
     throw 'StoreFunction can not be undefined';
   }
-  data.storeNews=storeNews; 
-  data.countryCode=countryCode;
-  data.languageCode=languageCode;
-  data.base=`https://news.google.com/?hl=${languageCode+'-'+countryCode}&gl=${countryCode}&ceid=${countryCode}:${languageCode}`;
+
+  storeData=storeNews; 
+  refresh();
 }
 module.exports.initialize=initialize;
+function addCountryCode(countryCode='IN')
+{
+  data[countryCode]=true;
+}
+module.exports.addCountryCode=addCountryCode;
 function refresh()
 {
      console.log("Refreshing.....");
-     crawlGoogle();
+     async.map(Object.keys(data),(code,done)=>{
+       crawlGoogle(code,done)
+     },(err,results)=>{
+        var mainResults={};
+        results.forEach((result)=>{
+          for(key in result)
+          {
+            mainResults[key]=result[key];
+          }
+        })
+        storeData(mainResults) 
+     })
+     
 }
 module.exports.refresh=refresh;
 class News{
@@ -37,10 +58,9 @@ class News{
 const headers = { 
   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
 };
-function crawlGoogle()
+function crawlGoogle(code,done)
 {
-
-   request.get({uri:data.base,headers:headers}, function(err, resp, body){
+   request.get({uri:base(code),headers:headers}, function(err, resp, body){
     var urls={}
     $ = cheerio.load(body);
     //Scraping topics
@@ -66,26 +86,18 @@ function crawlGoogle()
           }
         }
         var mainResults={};
-        mainResults[data.countryCode]=results;
-        data.storeNews(mainResults);   
+        mainResults[code]=results;
+        done(null,mainResults);   
       })  
     })
 }
-function search(query,countryCode,languageCode)
+function search(query)
 {
   if(!query)
   {
     throw 'Query can not be empty';
   }
-  if(!countryCode)
-  {
-    countryCode=data.countryCode;
-  }
-  if(!languageCode)
-  {
-    languageCode=data.languageCode;
-  }
-  var searchLink=`https://news.google.com/search?q=${query}&hl=${languageCode+'-'+countryCode}&gl=${countryCode}&ceid=${countryCode}:${languageCode}`;
+  var searchLink=`https://news.google.com/search?q=${query}`;
   return new Promise((resolve,reject)=>{
     function done(err,results)
     {
@@ -94,7 +106,7 @@ function search(query,countryCode,languageCode)
     crawlGoogleLink({link:searchLink,name:'Results'},done)
   });
 }
-search("Rahul Gandhi")
+
 module.exports.search=search;
 function crawlGoogleLink(topic,done)
 {  

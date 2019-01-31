@@ -35,9 +35,10 @@ News {
 ### Usage 
 ```
 var googleNewsApi=require('googlenewsapi');
-// Initialize with storeFunction,country code and language code.
-googleNewsApi.initialize(storeFunction,'IN','en');
-setInterval(googleNewsApi.refresh,1000*60);
+// Initialize with storeFunction,country code.
+googleNewsApi.initialize(storeFunction);
+googleNewsApi.addCountryCode(code);
+setInterval(googleNewsApi.refresh,1000*60*60);
 
 ```
 

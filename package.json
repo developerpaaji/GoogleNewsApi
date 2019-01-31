@@ -1,6 +1,6 @@
 {
   "name": "googlenewsapi",
-  "version": "2.0.0",
+  "version": "2.0.3",
   "description": "A npm package to scrap news of any language from any country from GoogleNews.",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,13 @@
   },
   "keywords": [
     "googlenews",
-   " news","newsapi","REST","async","promise","googlenewsapi","cheerio"
+    "news",
+    "newsapi",
+    "REST",
+    "async",
+    "promise",
+    "googlenewsapi",
+    "cheerio"
   ],
   "author": "Bhavneet Singh <singhbhavneetdeveloper@gmail.com> (https://github.com/singhbhavneet/)",
   "license": "MIT",
@@ -24,5 +30,6 @@
     "async": "^2.6.1",
     "cheerio": "^1.0.0-rc.2",
     "request": "^2.88.0"
-  }
+  },
+  "devDependencies": {}
 }
